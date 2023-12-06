@@ -49,8 +49,8 @@
                 height: 100%;
             }
             #formContainer {
-                width: 100%; /* Allows form to take full width of the container */
-                height: fit-content;
+                width: 100%;
+                overflow: visible; /* Ensure it doesn't cause internal scrolling */
             }
         </style>
     </head>
@@ -79,8 +79,6 @@
         if (videoId) {
             var embedUrl = 'https://www.youtube.com/embed/' + videoId;
             var iframeVideo = document.createElement('iframe');
-            iframeVideo.setAttribute('width', '560');
-            iframeVideo.setAttribute('height', '315');
             iframeVideo.setAttribute('src', embedUrl);
             iframeVideo.setAttribute('frameborder', '0');
             iframeVideo.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
@@ -96,7 +94,7 @@
             var iframeForm = document.createElement('iframe');
             iframeForm.setAttribute('src', superFormURL);
             iframeForm.setAttribute('width', '100%');
-            iframeForm.setAttribute('height', '700px'); // Adjust height as needed
+            iframeForm.setAttribute('height', 'auto');
             iframeForm.setAttribute('frameborder', '0');
             document.getElementById('formContainer').innerHTML = '';
             document.getElementById('formContainer').appendChild(iframeForm);
