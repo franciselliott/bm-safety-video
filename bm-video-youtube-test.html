@@ -33,11 +33,13 @@
         }
         #videoContainer {
             position: relative;
-            width: 800px; /* Fixed width for video */
+            width: 100%; /* Width as a percentage of the container's width */
+            max-width: 800px; /* Constrain the maximum width */
+            margin: 0 auto; /* Center the container */
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             height: 0;
-            margin-bottom: 20px;
         }
+
         #videoContainer iframe {
             position: absolute;
             top: 0;
@@ -49,7 +51,7 @@
             width: 100%; /* Allows form to take full width of the container */
         }
         #formContainer iframe {
-            height: 700px; /* Fixed height for the form */
+            height: 1200px; /* Fixed height for the form */
             width: 100%;
         }
     </style>
