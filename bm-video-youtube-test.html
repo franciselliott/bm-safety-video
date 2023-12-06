@@ -14,15 +14,13 @@
             flex-direction: column;
             margin: 0;
             padding: 20px;
-            background-color: #f4f4f4;
+            background-color: #FCF2D7;
         }
         .container {
             width: 80%;
             max-width: 800px; /* Fixed width */
             margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         h1 {
             color: #333;
@@ -50,7 +48,6 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Video and Form Page</h1>
         <div id="videoContainer">
             <h2>Video Loading...</h2>
         </div>
@@ -60,7 +57,44 @@
     </div>
 
     <script>
-        // JavaScript code remains the same as before
+        // Function to get a query parameter value by name
+        function getQueryParam(param) {
+            var queryParams = new URLSearchParams(window.location.search);
+            return queryParams.get(param);
+        }
+
+        // Fetching parameters
+        var videoId = getQueryParam('videourl');
+        var superFormURL = getQueryParam('superFormURL');
+
+        // Embedding YouTube video
+        if (videoId) {
+            var embedUrl = 'https://www.youtube.com/embed/' + videoId;
+            var iframeVideo = document.createElement('iframe');
+            iframeVideo.setAttribute('width', '560');
+            iframeVideo.setAttribute('height', '315');
+            iframeVideo.setAttribute('src', embedUrl);
+            iframeVideo.setAttribute('frameborder', '0');
+            iframeVideo.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframeVideo.setAttribute('allowfullscreen', true);
+            document.getElementById('videoContainer').innerHTML = '';
+            document.getElementById('videoContainer').appendChild(iframeVideo);
+        } else {
+            document.getElementById('videoContainer').innerText = 'No video URL provided.';
+        }
+
+        // Embedding SuperForm
+        if (superFormURL) {
+            var iframeForm = document.createElement('iframe');
+            iframeForm.setAttribute('src', superFormURL);
+            iframeForm.setAttribute('width', '100%');
+            iframeForm.setAttribute('height', '700px'); // Adjust height as needed
+            iframeForm.setAttribute('frameborder', '0');
+            document.getElementById('formContainer').innerHTML = '';
+            document.getElementById('formContainer').appendChild(iframeForm);
+        } else {
+            document.getElementById('formContainer').innerText = 'No form URL provided.';
+        }
     </script>
 </body>
 </html>
