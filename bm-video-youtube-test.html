@@ -1,43 +1,63 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Video Embed</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video and Form Page</title>
 </head>
 <body>
+    <h1>Welcome to the Video and Form Page</h1>
 
-<div id="videoContainer"></div>
+    <!-- Video Container -->
+    <div id="videoContainer">
+        <h2>Video Loading...</h2>
+    </div>
 
-<script>
-    function getQueryParam(url, param) {
-        var queryParams = new URLSearchParams(url.split('?')[1]);
-        return queryParams.get(param);
-    }
+    <!-- SuperForm Container -->
+    <div id="formContainer">
+        <h2>Form Loading...</h2>
+    </div>
 
-    var parentUrl = (window.location !== window.parent.location) ? document.referrer : document.location.href;
-    
-    var videoId = getQueryParam(parentUrl, 'videourl');
-    console.log('Parent URL:', parentUrl);
-    console.log('Video ID:', videoId);
-    console.log('Document Referrer:', document.referrer);
-    console.log('Window Location Hash:', window.location.hash);
-    console.log('Window Parent Location Hash:', window.parent.location.hash);
-   
-    
+    <script>
+        // Function to get a query parameter value by name
+        function getQueryParam(param) {
+            var queryParams = new URLSearchParams(window.location.search);
+            return queryParams.get(param);
+        }
 
-    if (videoId) {
-        var embedUrl = 'https://www.youtube.com/embed/' + videoId;
-        var iframe = document.createElement('iframe');
-        iframe.setAttribute('width', '560');
-        iframe.setAttribute('height', '315');
-        iframe.setAttribute('src', embedUrl);
-        iframe.setAttribute('frameborder', '0');
-        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-        iframe.setAttribute('allowfullscreen', true);
-        document.getElementById('videoContainer').appendChild(iframe);
-    } else {
-        document.getElementById('videoContainer').innerText = 'No video URL provided.';
-    }
-</script>
+        // Fetching parameters
+        var videoId = getQueryParam('videourl');
+        var superFormURL = getQueryParam('superFormURL');
 
+        // Embedding YouTube video
+        if (videoId) {
+            var embedUrl = 'https://www.youtube.com/embed/' + videoId;
+            var iframeVideo = document.createElement('iframe');
+            iframeVideo.setAttribute('width', '560');
+            iframeVideo.setAttribute('height', '315');
+            iframeVideo.setAttribute('src', embedUrl);
+            iframeVideo.setAttribute('frameborder', '0');
+            iframeVideo.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+            iframeVideo.setAttribute('allowfullscreen', true);
+            document.getElementById('videoContainer').innerHTML = '';
+            document.getElementById('videoContainer').appendChild(iframeVideo);
+        } else {
+            document.getElementById('videoContainer').innerText = 'No video URL provided.';
+        }
+
+        // Embedding SuperForm
+        if (superFormURL) {
+            var iframeForm = document.createElement('iframe');
+            iframeForm.setAttribute('src', superFormURL);
+            iframeForm.setAttribute('width', '100%');
+            iframeForm.setAttribute('height', '700px'); // Adjust height as needed
+            iframeForm.setAttribute('frameborder', '0');
+            document.getElementById('formContainer').innerHTML = '';
+            document.getElementById('formContainer').appendChild(iframeForm);
+        } else {
+            document.getElementById('formContainer').innerText = 'No form URL provided.';
+        }
+    </script>
 </body>
 </html>
