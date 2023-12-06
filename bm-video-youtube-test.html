@@ -1,60 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video and Form Page</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin: 0;
-            padding: 20px;
-            background-color: #FCF2D7;
-        }
-        .container {
-            width: 80%;
-            max-width: 1000px; /* Fixed width */
-            margin: 20px auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-            font-size: 2.5em;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        iframe {
-            width: 100%;
-            border: none;
-        }
-        #videoContainer {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-        }
-        #videoContainer iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div id="videoContainer">
-            <h2>Video Loading...</h2>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Video and Form Page</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin: 0;
+                padding: 20px;
+                background-color: #FCF2D7;
+            }
+            .container {
+                width: 100%;
+                max-width: 1200px; /* Max width for the overall container */
+                margin: 20px auto;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            h1 {
+                color: #333;
+                font-size: 2.5em;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            iframe {
+                width: 100%;
+                border: none;
+            }
+            #videoContainer {
+                position: relative;
+                width: 800px; /* Fixed width for video */
+                padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+                height: 0;
+            }
+            #videoContainer iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            #formContainer {
+                width: 100%; /* Allows form to take full width of the container */
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="videoContainer">
+                <h2>Video Loading...</h2>
+            </div>
+            <div id="formContainer">
+                <h2>Form Loading...</h2>
+            </div>
         </div>
-        <div id="formContainer">
-            <h2>Form Loading...</h2>
-        </div>
-    </div>
 
     <script>
         // Function to get a query parameter value by name
