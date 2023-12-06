@@ -14,7 +14,11 @@
     }
 
     var parentUrl = (window.location !== window.parent.location) ? document.referrer : document.location.href;
+    
     var videoId = getQueryParam(parentUrl, 'videourl');
+    console.log('Parent URL:', parentUrl);
+    console.log('Video ID:', videoId);
+    
 
     if (videoId) {
         var embedUrl = 'https://www.youtube.com/embed/' + videoId;
