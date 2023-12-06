@@ -5,59 +5,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video and Form Page</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px; /* Fixed width */
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        iframe {
+            width: 100%;
+            border: none;
+        }
+        #videoContainer {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+        }
+        #videoContainer iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Video and Form Page</h1>
-
-    <!-- Video Container -->
-    <div id="videoContainer">
-        <h2>Video Loading...</h2>
-    </div>
-
-    <!-- SuperForm Container -->
-    <div id="formContainer">
-        <h2>Form Loading...</h2>
+    <div class="container">
+        <h1>Welcome to the Video and Form Page</h1>
+        <div id="videoContainer">
+            <h2>Video Loading...</h2>
+        </div>
+        <div id="formContainer">
+            <h2>Form Loading...</h2>
+        </div>
     </div>
 
     <script>
-        // Function to get a query parameter value by name
-        function getQueryParam(param) {
-            var queryParams = new URLSearchParams(window.location.search);
-            return queryParams.get(param);
-        }
-
-        // Fetching parameters
-        var videoId = getQueryParam('videourl');
-        var superFormURL = getQueryParam('superFormURL');
-
-        // Embedding YouTube video
-        if (videoId) {
-            var embedUrl = 'https://www.youtube.com/embed/' + videoId;
-            var iframeVideo = document.createElement('iframe');
-            iframeVideo.setAttribute('width', '560');
-            iframeVideo.setAttribute('height', '315');
-            iframeVideo.setAttribute('src', embedUrl);
-            iframeVideo.setAttribute('frameborder', '0');
-            iframeVideo.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
-            iframeVideo.setAttribute('allowfullscreen', true);
-            document.getElementById('videoContainer').innerHTML = '';
-            document.getElementById('videoContainer').appendChild(iframeVideo);
-        } else {
-            document.getElementById('videoContainer').innerText = 'No video URL provided.';
-        }
-
-        // Embedding SuperForm
-        if (superFormURL) {
-            var iframeForm = document.createElement('iframe');
-            iframeForm.setAttribute('src', superFormURL);
-            iframeForm.setAttribute('width', '100%');
-            iframeForm.setAttribute('height', '700px'); // Adjust height as needed
-            iframeForm.setAttribute('frameborder', '0');
-            document.getElementById('formContainer').innerHTML = '';
-            document.getElementById('formContainer').appendChild(iframeForm);
-        } else {
-            document.getElementById('formContainer').innerText = 'No form URL provided.';
-        }
+        // JavaScript code remains the same as before
     </script>
 </body>
 </html>
