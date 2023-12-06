@@ -18,6 +18,14 @@
     var videoId = getQueryParam(parentUrl, 'videourl');
     console.log('Parent URL:', parentUrl);
     console.log('Video ID:', videoId);
+    console.log('Parent Location:', window.parent.location);
+    console.log('Parent Location Href:', window.parent.location.href);
+    console.log('Window Location:', window.location);
+    console.log('Document Referrer:', document.referrer);
+    console.log('Document Location Href:', document.location.href);
+    console.log('Window Location Hash:', window.location.hash);
+    console.log('Window Parent Location Hash:', window.parent.location.hash);
+   
     
 
     if (videoId) {
