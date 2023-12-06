@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Embed</title>
+</head>
+<body>
+
+<div id="videoContainer"></div>
+
+<script>
+    function getQueryParam(url, param) {
+        var queryParams = new URLSearchParams(url.split('?')[1]);
+        return queryParams.get(param);
+    }
+
+    var parentUrl = (window.location !== window.parent.location) ? document.referrer : document.location.href;
+    var videoId = getQueryParam(parentUrl, 'videourl');
+
+    if (videoId) {
+        var embedUrl = 'https://www.youtube.com/embed/' + videoId;
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('width', '560');
+        iframe.setAttribute('height', '315');
+        iframe.setAttribute('src', embedUrl);
+        iframe.setAttribute('frameborder', '0');
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+        iframe.setAttribute('allowfullscreen', true);
+        document.getElementById('videoContainer').appendChild(iframe);
+    } else {
+        document.getElementById('videoContainer').innerText = 'No video URL provided.';
+    }
+</script>
+
+</body>
+</html>
