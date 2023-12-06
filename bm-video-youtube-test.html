@@ -85,12 +85,6 @@
             iframeVideo.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
             iframeVideo.setAttribute('allowfullscreen', true);
             
-            // Set the dimensions for the video
-            var videoWidth = 800; // Fixed width
-            var videoHeight = videoWidth * 9 / 16; // Height calculated for 16:9 aspect ratio
-            iframeVideo.setAttribute('width', videoWidth.toString());
-            iframeVideo.setAttribute('height', videoHeight.toString());
-            
             document.getElementById('videoContainer').innerHTML = '';
             document.getElementById('videoContainer').appendChild(iframeVideo);
         }
